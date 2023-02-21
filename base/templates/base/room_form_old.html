@@ -1,0 +1,16 @@
+<!--Create a template that is gonna represent a form for UPDATING AND CREATING A ROOM-->
+
+{% extends  'main.html' %}
+
+{% block content %}
+
+<div>
+    <form method="POST" action="" >                       <!--In the form uneed to specify the METHOD, sending data = POST method -->
+        {% csrf_token %}                                   <!-- Prevent malicious attempt -->
+        <!-- {{form}} -->
+        {{form.as_p}}                    <!-- wraps a paragraph tag around every i/p fill that the form has and it will just render those -->
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+<!-- This is going to be a dynamic template meaning that later on when we go to delete a comment 
+    it's gonna be the same template to delete any item inisde of our website i.e PREETY GENERIC -->
+
+{% extends 'main.html' %} 
+
+{% block content %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+    <p>Are you sure you want to delete "{{obj}}"?</p>
+    <a href="{{request.META.HTTP_REFERER}}">Go Back </a>
+    <input type="submit" value="Confirm" />
+    
+</form>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+<div>
+    <form  method="post" action="">        <!-- We are gonna send DATA BACK TO our VIEW "POST"-->
+        {% csrf_token %}
+
+        <label for="">Username:</label>
+        <input type="text" name="username" value="" placeholder="Enter Username" />    <!-- BUG -->
+
+        <label for="">Password:</label>
+        <input type="password" name="password" placeholder="Enter Password" />
+
+        <input type="submit" name="login"/>
+    
+    </form>  
+    
+    <p>Haven't sign up yet ?</p>
+    <a href="{% url 'signup' %}"> Sign Up</a>
+</div>
+
+
+{% else %}
+<!-- For the REGISTER/SIGNUP page-->
+
+<div>
+    <form  method="post" action="">        <!-- We are gonna send DATA BACK TO our VIEW "POST"-->
+        {% csrf_token %}
+                                            <!-- When to use double {} and when {% }-->
+        {{form.as_p}}                       
+
+        <input type="submit" name="signup"/>
+    </form>          
+    
+    <p>Already signed up ?</p>
+    <a href="{% url 'login' %}">Log in</a> 
+</div>
+
+{% endif %}
+{% endblock content %}

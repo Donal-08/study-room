@@ -1,0 +1,47 @@
+{% extends 'main.html' %}                        <!-- inherits the entire HTML structure from 'main.html' -->
+<!-- {% include  'navbar.html' %} -->
+
+
+{% block content %}
+
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;                   /* 1/5 of the website = 1st column and (3/4)th width = 2nd column */
+    }
+</style>
+
+
+
+<div class="home-container">
+
+    <div>
+
+        {% include 'base/topic_component.html' %}           <!-- we have access to topics inside of the topic_component.html => WHY ?-->
+
+    </div>
+
+
+    <div>  
+        <h5>{% if room_count > 1 %}
+            {{room_count}} rooms available
+            {% else %}
+            {{room_count}} room available
+            {% endif    %}
+        </h5>      
+        <a href="{% url 'create-room' %}"> Create Room</a>
+
+        <!-- <div> -->
+        {% include 'base/feed_component.html' %}         <!-- Here we included the div tag inside of feed_component because we need different spaces above it in HOME AND USER PROFILE-->
+        <!-- </div>  -->
+               
+    </div>
+
+    <div>
+        {% include 'base/activity_component.html' %}
+    </div>
+
+
+</div>
+
+{% endblock content %}
